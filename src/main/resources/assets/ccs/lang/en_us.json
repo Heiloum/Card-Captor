@@ -1,4 +1,6 @@
 {
   "item.ccs.windy": "The Windy",
-  "item.ccs.watery": "The Watery"
+  "item.ccs.watery": "The Watery",
+
+  "creativetab.ccs.windy_items": "Windy Card"
 }
