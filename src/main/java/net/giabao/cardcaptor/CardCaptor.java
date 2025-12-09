@@ -1,6 +1,7 @@
 package net.giabao.cardcaptor;
 
 import net.giabao.cardcaptor.item.ModItems;
+import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -20,7 +21,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(CardCaptor.MOD_ID)
 public class CardCaptor {
-    public static final String MOD_ID = "cardcaptorsakura";
+    public static final String MOD_ID = "ccs";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -44,20 +45,14 @@ public class CardCaptor {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
 
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        }
-
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
-
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.WINDY);
+            event.accept(ModItems.WATERY);
+        }
 
     }
     // You can use SubscribeEvent and let the Event Bus discover methods to call
